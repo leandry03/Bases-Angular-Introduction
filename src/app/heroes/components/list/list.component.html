@@ -1,0 +1,29 @@
+
+<h3>Listado de Heroes</h3>
+
+<!--Aqui le decimo si se elimino un heroe muestralo de lo contrario muestra el template-->
+<div *ngIf="deletedHero; else nothingWasDeleted">
+  <!--Vamos a crear un h3 para mostrar el ultimo heroe borrado-->
+  <h3>Heroe borrado<small class="text-danger">{{deletedHero}}</small></h3>
+</div>
+
+<!--El ng-template se encarga de olcultar el elemento y solo cuando diga se mostrara-->
+<ng-template #nothingWasDeleted> <!--Este # es el nombre de referencia del template-->
+  <h3>No ha borrado ningun heroe</h3>
+</ng-template>
+
+
+<!--Vamos a crear un boton para borrar el ultimo heroe-->
+<button *ngIf="heroNames.length > 0"
+  (click)="deleteLastHero()" class="btn btn-outline-danger">
+  Borrar Ultimo Heroe
+</button>
+
+<!--Esta lista tendra un va a ir agregando a la variable name a la lista de heroName para luego mostrarlo-->
+<ul class="mt-2 list-group">
+  <li
+  *ngFor="let name of heroNames"
+  class="list-group-item">{{name}}
+  </li>
+
+</ul>
