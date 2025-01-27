@@ -1,0 +1,18 @@
+<h1>DBZ MAIN PAGE</h1>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <!--ESTO UTILIZARA EL HTML DEL COMPONENTE QUE CREAMOS EN LA CARPETA LIST PARA REUTILIZARLO SI ES NECESARIO-->
+   <!--Con pasar el characterList puedo hacceder a mi arreglo y a la inyeccion del servicio en el main.component-->
+    <app-dbz-list [characterList]="characters"(onDelete)="onDeleteCharacter($event)"></app-dbz-list>
+    <!--el event sale del eventEmiter declarado en el app-dbz-list-->
+  </div>
+
+  <div class="col">
+    <!--Este identificador recibe un evento que va a recibir el metodo onNewCharacter que recibe por
+    parametro el $event que sera de tipo Character-->
+    <app-dbz-add-character (onNewCharacter)="onNewCharacter($event)"></app-dbz-add-character>
+  </div>
+</div>
+
